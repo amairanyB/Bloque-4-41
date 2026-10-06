@@ -1,0 +1,21 @@
+Ejemplo creación de entorno virtual.
+
+En la terminal:
+python -m venv entornov
+ # Activar:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+.\entornov\Scripts\Activate.ps1
+
+python -m pip install matplot seaborn numpy pandas
+
+pip install psycopg[binary]
+
+pip install openpyxl
+
+
+# Permite temporalmente ejecutar el script de activación: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+# verificar las librerías: pip list
+
+# salir del entorno: deactivate

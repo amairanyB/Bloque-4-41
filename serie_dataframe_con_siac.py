@@ -1,4 +1,5 @@
 import pandas as pd
+
 from conexionBD import conexionBD
 
 
@@ -20,25 +21,13 @@ class serie_dataframe_con_siac:
         print("\nSerie de nombres de actas:")
         print(serie)
 
-    def obtener_diccionario(self):
+    def obtener_dataframe(self):
         consulta = """
             SELECT nombre_acta, siglas_acta
             FROM siac.ttipo_acta
         """
 
-        df = pd.read_sql(consulta, self.bd.conexion)
-
-        diccionario = dict(
-            zip(df["nombre_acta"], df["siglas_acta"])
-        )
-
-        print("\nDiccionario de actas y sus siglas:")
-        print(diccionario)
-
-        dataframe = pd.DataFrame(
-            list(diccionario.items()),
-            columns = ["nombre_acta", "siglas_acta"]
-        )
+        dataframe = pd.read_sql(consulta, self.bd.conexion)
 
         print("\nDataFrame de actas y sus siglas:")
         print(dataframe)
@@ -46,12 +35,13 @@ class serie_dataframe_con_siac:
     def cerrar(self):
         self.bd.cerrar()
 
+
 # Ejecución
+
 objeto = serie_dataframe_con_siac()
 
 objeto.obtener_serie()
 
-objeto.obtener_diccionario()
+objeto.obtener_dataframe()
 
 objeto.cerrar()
-      
